@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Menu, Bell, ShieldCheck, Activity } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { Menu, Bell, ShieldCheck, Activity, Sun, Moon } from 'lucide-react';
 
 export const AdminNavbar = ({ onMobileMenuToggle, unreadCount = 0 }) => {
   const { user } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-20 h-16 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 flex items-center justify-between text-white">
+    <header className="sticky top-0 z-20 h-16 bg-[var(--admin-navbar-bg)]/95 backdrop-blur-md border-b border-slate-700/60 px-4 sm:px-6 flex items-center justify-between text-white transition-colors duration-200">
       <div className="flex items-center gap-3">
         <button
           onClick={onMobileMenuToggle}
-          className="lg:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800 transition-colors"
+          className="lg:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-700/60 transition-colors"
           aria-label="Toggle Mobile Menu"
         >
           <Menu className="w-5 h-5" />
@@ -30,11 +32,21 @@ export const AdminNavbar = ({ onMobileMenuToggle, unreadCount = 0 }) => {
         </span>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="theme-toggle text-slate-300 hover:bg-slate-700/60 hover:text-white transition-colors"
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label="Toggle theme"
+        >
+          {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+        </button>
+
         {/* Admin Notifications */}
         <Link
           to="/admin/notifications"
-          className="relative p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+          className="relative p-2 text-slate-300 hover:text-white hover:bg-slate-700/60 rounded-lg transition-colors"
           title="Admin Notifications"
         >
           <Bell className="w-5 h-5" />
@@ -46,7 +58,7 @@ export const AdminNavbar = ({ onMobileMenuToggle, unreadCount = 0 }) => {
         </Link>
 
         {/* Profile Pill */}
-        <div className="flex items-center gap-2.5 pl-3 border-l border-slate-800">
+        <div className="flex items-center gap-2.5 pl-3 border-l border-slate-700/60">
           <div className="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-rose-900">
             {user?.name ? user.name.charAt(0) : 'A'}
           </div>

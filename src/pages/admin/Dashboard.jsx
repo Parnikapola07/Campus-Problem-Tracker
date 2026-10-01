@@ -140,17 +140,17 @@ export const AdminDashboard = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-5 rounded-2xl bg-rose-950/40 border border-rose-800/80 text-rose-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm"
+          className="p-5 rounded-2xl bg-rose-100 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm"
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold shrink-0">
               <Flame className="w-5 h-5 animate-bounce" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">
+              <h3 className="text-sm font-bold text-rose-900 dark:text-white">
                 {criticalIssues.length} Critical Issue{criticalIssues.length > 1 ? 's' : ''} Require Immediate Attention
               </h3>
-              <p className="text-xs text-rose-300/80 mt-0.5">
+              <p className="text-xs text-rose-700 dark:text-rose-300/80 mt-0.5">
                 Urgent safety or campus infrastructure failures queued in the priority matrix.
               </p>
             </div>
@@ -220,13 +220,13 @@ export const AdminDashboard = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recent Campus Tickets</h2>
-            <p className="text-xs text-slate-500">Latest problem reports submitted across all campus departments</p>
+            <h2 className="text-lg font-bold text-[var(--text-primary)]">Recent Campus Tickets</h2>
+            <p className="text-xs text-[var(--text-secondary)]">Latest problem reports submitted across all campus departments</p>
           </div>
 
           <Link
             to="/admin/problems"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 flex items-center gap-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex items-center gap-1"
           >
             <span>View All ({problems.length})</span>
             <ArrowRight className="w-3.5 h-3.5" />

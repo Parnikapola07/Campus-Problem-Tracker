@@ -30,7 +30,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen, unreadNotifCount = 0 }) => 
   };
 
   const navContent = (
-    <div className="flex flex-col h-full bg-slate-900 text-slate-300 w-64 border-r border-slate-800">
+    <div className="flex flex-col h-full w-64 bg-slate-900 dark:bg-slate-950 text-slate-300 border-r border-slate-800 dark:border-slate-800/60 transition-colors duration-200">
       {/* Brand Header */}
       <div className="h-16 flex items-center justify-between px-6 border-b border-slate-800">
         <div className="flex items-center gap-3">
@@ -42,7 +42,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen, unreadNotifCount = 0 }) => 
               Campus Tracker
             </h2>
             <span className="text-[10px] text-indigo-400 font-medium tracking-wider uppercase mt-0.5 block">
-              Student & Staff Portal
+              Student &amp; Staff Portal
             </span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AdminProtectedRoute } from './components/AdminProtectedRoute';
 import { Navbar } from './components/Navbar';
@@ -55,7 +56,7 @@ const UserLayout = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-[var(--bg-app)] flex transition-colors duration-200">
       <Sidebar
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
@@ -95,7 +96,7 @@ const AdminLayout = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-100 flex">
+    <div className="min-h-screen bg-[var(--bg-app)] flex transition-colors duration-200">
       <AdminSidebar
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
@@ -116,7 +117,8 @@ const AdminLayout = () => {
 
 export default function App() {
   return (
-    <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
       <BrowserRouter>
         <Routes>
           {/* Public Sign In Portals */}
@@ -168,5 +170,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </ThemeProvider>
   );
 }

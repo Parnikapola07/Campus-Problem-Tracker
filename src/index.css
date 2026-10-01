@@ -1,33 +1,80 @@
 @import "tailwindcss";
 
+/* ─── Enable dark mode via .dark class on <html> ─── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Token Layer ─── */
 @layer base {
+  :root {
+    /* Light mode tokens */
+    --bg-app:       #f1f5f9;
+    --bg-surface:   #ffffff;
+    --bg-surface-2: #f8fafc;
+    --bg-border:    #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted:   #94a3b8;
+
+    /* Admin sidebar light – rich navy so text stays readable */
+    --admin-sidebar-bg:  #1e293b;
+    --admin-sidebar-border: #334155;
+    --admin-navbar-bg:   #1e293b;
+  }
+
+  .dark {
+    /* Dark mode tokens */
+    --bg-app:       #0f172a;
+    --bg-surface:   #1e293b;
+    --bg-surface-2: #162032;
+    --bg-border:    #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted:   #64748b;
+
+    --admin-sidebar-bg:  #0c1120;
+    --admin-sidebar-border: #1e293b;
+    --admin-navbar-bg:   #0c1120;
+  }
+
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: #0f172a;
-    background-color: #f8fafc;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
-/* Custom smooth scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* ─── Smooth Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
+:root.dark ::-webkit-scrollbar-thumb { background: #334155; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+:root.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
-/* Glassmorphism helpers */
+/* ─── Glassmorphism Helpers ─── */
 .glass-panel {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+/* ─── Theme Toggle Button ─── */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
 }

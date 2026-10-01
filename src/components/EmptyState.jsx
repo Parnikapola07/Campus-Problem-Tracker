@@ -11,12 +11,12 @@ export const EmptyState = ({
   onActionClick
 }) => {
   return (
-    <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-10 text-center flex flex-col items-center justify-center max-w-lg mx-auto my-8">
-      <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 shadow-inner">
+    <div className="bg-[var(--bg-surface)] border border-dashed border-[var(--bg-border)] rounded-2xl p-10 text-center flex flex-col items-center justify-center max-w-lg mx-auto my-8 transition-colors duration-200">
+      <div className="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 shadow-inner">
         <Icon className="w-7 h-7" />
       </div>
-      <h3 className="text-lg font-bold text-slate-800 mb-1">{title}</h3>
-      <p className="text-sm text-slate-500 max-w-sm mb-6 leading-relaxed">{description}</p>
+      <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">{title}</h3>
+      <p className="text-sm text-[var(--text-secondary)] max-w-sm mb-6 leading-relaxed">{description}</p>
       
       {actionText && actionLink && (
         <Link
